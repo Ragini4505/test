@@ -13,10 +13,13 @@ app.use(express.static('public'));
 
 // AWS Configuration
 // 🔥 REPLACE WITH YOUR ACTUAL CREDENTIALS
+
+require('dotenv').config();
+
 AWS.config.update({
-    accessKeyId: 'AKIAXVX7T6HUNZD722ND',
-    secretAccessKey: '97UWS4VsBArgbZoBrdnEGHOigKRzB9Shm4v7f7ju',
-    region: 'ap-south-1'
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION || 'ap-south-1'
 });
 
 const s3 = new AWS.S3();
