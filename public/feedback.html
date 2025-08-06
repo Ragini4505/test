@@ -10,35 +10,28 @@
     <p>We value your feedback! Please let us know your thoughts.</p>
     
     <form id="feedbackForm">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br><br>
-        
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br><br>
-        
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-        
-        <input type="submit" value="Submit Feedback">
+      <input type="text" name="name" required placeholder="Name">
+      <input type="email" name="email" required placeholder="Email">
+      <textarea name="message" placeholder="Message"></textarea>
+      <button type="submit">Submit</button>
     </form>
-
     <script>
-      document.getElementById('feedbackForm').addEventListener('submit', async function (e) {
-        e.preventDefault(); // Stop default form action
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        const response = await fetch('/submit-form', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message })
-        });
-
-        const result = await response.json();
-        alert(result.message || 'Form submitted!');
+    document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
+      const response = await fetch('/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       });
+      const result = await response.json();
+      alert(result.message || result.error);
+    });
     </script>
 </body>
 </html>
