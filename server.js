@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 // 
 // Middleware
 app.use(cors());
@@ -144,10 +144,10 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(`🚀 Server running at http://13.201.44.49:${PORT}`);
     console.log(`📁 Serving HTML files from public/ directory`);
     console.log(`🪣 Using S3 bucket: ${BUCKET_NAME}`);
     console.log(`🌍 AWS Region: ap-south-1`);
-    console.log(`📊 Health check: http://localhost:${PORT}/health`);
+    console.log(`📊 Health check: http://13.201.44.49:${PORT}/health`);
 });
 
