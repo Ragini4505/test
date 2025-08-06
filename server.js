@@ -30,7 +30,7 @@ const BUCKET_NAME = 'test-feedback2025';
         res.sendFile(path.join(__dirname, 'public', 'index.html'));
     });
 app.get('/submit-form', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'feedback.html'));
 });
 
 app.get('/form', (req, res) => {
