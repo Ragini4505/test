@@ -13,8 +13,7 @@ app.use(express.static('public'));
 
 // AWS Configuration (SDK v3)
 const s3 = new S3Client({
-    region: 'eu-north-1',
-   
+    
 });
 const BUCKET_NAME = 'feedback2025';
 
